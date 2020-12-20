@@ -30,14 +30,11 @@
 #
 
 ########################################################################
-#                              START CONFIG                            #
+#                           START CONFIG                               #
 ########################################################################
 
-# Change to the last positive coordinate of the tile
-width=2    # last tile is x=2
-height=5   # last tile is y=5
-           # Add an additional 1 to the last Y coord if
-           # it happens to be missing
+# TILES
+#-----------------------------------------------------------------------
 
 # Change to the dimensions of the single tile
 xDim=100  #100 for 100px wide
@@ -47,6 +44,18 @@ yDim=100  #100 for 100px tall
 # This will start at -3,-3
 xStart=-3
 yStart=-3
+
+# IMAGE
+#-----------------------------------------------------------------------
+
+# Change to the last positive coordinate of the tile
+width=2    # last tile is x=2
+height=5   # last tile is y=5
+           # Add an additional 1 to the last Y coord if
+           # it happens to be missing
+
+# FILE
+#-----------------------------------------------------------------------
 
 # Change accordingly to the file prefix
 filename=test
@@ -63,7 +72,7 @@ tileLocation="./sample_tiles"
 # Change this to where you want to save the final stitched image
 stitchLocation="./final location"
 ########################################################################
-#                                END CONFIG                            #
+#                           END CONFIG                                 #
 ########################################################################
 
 # Go into the working directory
