@@ -35,12 +35,6 @@ What this script does:
 
 # Variables/Configuration:
 
-## Final Image size:
-
-- `width` - The last coordinate on the `X`-axis
-- `height` - The last coordinate on the `Y`-axis
-
-
 ## Tiles:
 
 - `xDim` - width in px of an individual image tile
@@ -51,6 +45,13 @@ What this script does:
 - `yStart` - Starting coordinate of where the script will start on the `Y`-axis
   - example: `xStart=-3` and `yStart=-3` will tell the script to start stitching at the -3,-3 on the grid coordinate
   
+## Image:
+
+- `width` - The last coordinate on the `X`-axis
+- `height` - The last coordinate on the `Y`-axis
+ - `width=2` and `height=5` will tell the image to stop at `2,5`.
+   - With `width=2`, `height=5`, `xStart=-3`, and `yStart=-3`, the image will have a total size of 5 tiles wide and 8 tiles tall.
+
 ## File:
 
 - `filename` - the set prefix that the image set has
