@@ -12,7 +12,7 @@ What this script does:
  - Combine all images horizontally in numbered order
  - Then combine the image strips vertically to a final image
 
-##Note: This script assumes that the images are in the same directory and is named as such:
+## Note: This script assumes that the images are in the same directory and is named as such:
 
     filename.x.y.ext
       |      | |  |
@@ -21,7 +21,7 @@ What this script does:
       |      +-X location of image tile
       +-Prefix of the image tiles
 
-##This script also assumes that images are ordered as below:
+## This script also assumes that images are ordered as below:
 
        [*]   |
        -x,-y | +x,-y
@@ -31,17 +31,17 @@ What this script does:
        -x,+y | +x,+y
              |
 
-[*] - The script will always start from the uppermost left to right and then downwards.
+`[*]` - The script will always start from the uppermost left to right and then downwards in the direction from `-x,-y` to `+x,+y`.
 
+# Variables/Configuration:
 
-#Variables/Configuration:
-
-##Final Image size:
+## Final Image size:
 
 - `width` - The last coordinate on the `X`-axis
 - `height` - The last coordinate on the `Y`-axis
 
-##Tiles:
+
+## Tiles:
 
 - `xDim` - width in px of an individual image tile
 - `yDim` - height in px of an individual image tile
@@ -50,9 +50,8 @@ What this script does:
 - `xStart` - Starting coordinate of where the script will start on the `X`-axis
 - `yStart` - Starting coordinate of where the script will start on the `Y`-axis
   - example: `xStart=-3` and `yStart=-3` will tell the script to start stitching at the -3,-3 on the grid coordinate
-
-
-##File:
+  
+## File:
 
 - `filename` - the set prefix that the image set has
 - `ext` - the file extension of the image format.
