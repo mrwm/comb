@@ -43,22 +43,22 @@ height=5   # last tile is y=5
 xDim=100  #100 for 100px wide
 yDim=100  #100 for 100px tall
 
+# Change to where you want to start the stitching
+# This will start at -3,-3
+xStart=-3
+yStart=-3
+
 # Change accordingly to the file prefix
 filename=test
 
 # Change accordingly to the file extension
 ext=png
 
-# Change to where you want to start the stitching
-# This will start at -3,-3
-xStart=-3
-yStart=-3
-
 # Change this to whatever color you want the gaps to be in
 gapColor="#ffa348"
 
 # Change this to where the set of tiles are located
-location="./sample_tiles"
+tileLocation="./sample_tiles"
 
 # Change this to where you want to save the final stitched image
 stitchLocation="./final location"
@@ -67,7 +67,7 @@ stitchLocation="./final location"
 ########################################################################
 
 # Go into the working directory
-cd $location
+cd $tileLocation
 
 # Create temporary folder to hold partially stitched images
 tmp=$(mktemp -d)
