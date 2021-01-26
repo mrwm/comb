@@ -59,8 +59,11 @@ Edit the cofiguration for the image tiles, then run the script with
 | ----------- | ----------- |
 | `xDim` | width in `px` of an individual image tile |
 | `yDim` | height in `px` of an individual image tile |
+| `xStart` | Starting `x` coordinate tile of the image |
+| `yStart` | Starting `y` coordinate tile of the image |
 - example: `xDim=100` and `yDim=100` will tell the script that each tile has a dimension size of 100px wide and 100px tall
-  
+- example: `xStart=-3` and `yStart=-3` will tell the script to start stitching tiles starting from the coordinate `(-3,-3)`.
+
 ## Image:
 | Variable | Description |
 | ----------- | ----------- |
