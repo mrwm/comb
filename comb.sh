@@ -58,7 +58,7 @@ height=5   # last tile is y=5
 #-----------------------------------------------------------------------
 
 # Change accordingly to the file prefix
-filename=test
+filename="test"
 
 # Change accordingly to the file extension
 ext=png
@@ -76,7 +76,7 @@ stitchLocation="./final location"
 ########################################################################
 
 # Go into the working directory
-cd $tileLocation
+cd $tileLocation || exit
 
 # Create temporary folder to hold partially stitched images
 tmp=$(mktemp -d)
@@ -88,7 +88,7 @@ xVal=$xStart
 yVal=$yStart
 
 # Create a placeholder image to be linked later
-convert -size $xDim\x$yDim xc:$gapColor $tmp/$filename.temp.$ext
+convert -size $xDim\x$yDim xc:$gapColor "$tmp"/$filename.temp.$ext
 
 
 ########################################################################
@@ -101,7 +101,7 @@ while [ $yVal -le $height ]; do
       : # do nothing since the file exists
     else
       # link the placeholder
-      ln -s $tmp/$filename.temp.$ext $filename.$xVal.$yVal.$ext
+      ln -s "$tmp"/$filename.temp.$ext $filename.$xVal.$yVal.$ext
     fi
     xVal=$((xVal + 1))
   done
@@ -125,11 +125,11 @@ while [ $yVal -le $height ]; do
     # Check if the image can be paired horizontally
     if [ -f $filename.$(($xVal + 1)).$yVal.$ext ]; then
       # Go through all the images and pair them up horizontally
-      convert $filename.$xVal.$yVal.$ext $filename.$(($xVal + 1)).$yVal.$ext +append $tmp/$filename.P$xPairs.$yStrips.$ext
+      convert $filename.$xVal.$yVal.$ext $filename.$(($xVal + 1)).$yVal.$ext +append "$tmp"/$filename.P$xPairs.$yStrips.$ext
     else
       # this image has no pairs, so
       # copy the image to temp for stitching
-      cp $filename.$xVal.$yVal.$ext $tmp/$filename.P$xPairs.$yStrips.$ext
+      cp $filename.$xVal.$yVal.$ext "$tmp"/$filename.P$xPairs.$yStrips.$ext
     fi
 
     xVal=$((xVal + 2))
@@ -137,7 +137,7 @@ while [ $yVal -le $height ]; do
   done
 
   # Combine all the horizontal pairs into horizontal strips
-  convert $tmp/$filename.P*.$yStrips.$ext +append $tmp/$filename.$yStrips\_H.$ext
+  convert "$tmp"/$filename.P*.$yStrips.$ext +append "$tmp"/$filename.$yStrips\_H.$ext
 
   yVal=$((yVal + 1))
   yStrips=$((yStrips + 1))
@@ -149,7 +149,7 @@ yVal=$yStart
 # reset the values after pairing
 
 # Finally combine all horizontal image strips to form the final image
-convert $tmp/$filename.*_H.$ext -append $filename\_stitched.$ext
+convert "$tmp"/$filename.*_H.$ext -append $filename\_stitched.$ext
 
 ########################################################################
 #                           Cleanup                                    #
@@ -169,11 +169,11 @@ while [ $yVal -le $height ]; do
 done
 
 # Remove the tmp folder
-rm -rf $tmp
+rm -rf "$tmp"
 
 # Head back to initial location and
 # move the stitched image to the location in the config section
-cd $OLDPWD && mv $OLDPWD/$filename\_stitched.$ext "$stitchLocation"
+cd "$OLDPWD" && mv "$OLDPWD"/$filename\_stitched.$ext "$stitchLocation"
 
 ########################################################################
 #                           END                                        #
